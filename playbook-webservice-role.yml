@@ -1,0 +1,13 @@
+---
+- name: Using a role to deploy a webservice
+  hosts: web
+  gather_facts: no
+  become: yes
+  
+  #  roles:
+  #    - alta3.webservice
+  #
+  tasks:
+          - name: Run a role that constructs a webserver
+            import_role:
+                    name: deploy-apache2-webservice

@@ -1,0 +1,6 @@
+---
+# handlers file for /home/student/ans/roles/deploy-apache2-webservice
+- name: restart service
+  service:
+          name: apache2
+          state: restarted

@@ -1,0 +1,23 @@
+---
+- name: Playbook - Install figlet
+  hosts: planetexpress  
+  gather_facts: yes   # default is yes (should i run setup.py?)
+  connection: ssh   # using connection plugin ssh.py is the default setting
+
+  # what you want to do goes under tasks
+  tasks:
+
+  - name: using apt to install figlet
+    apt:
+        name: figlet
+        state: present
+    become: yes    # run as sudo or admin
+    when: ansible_distribution == "Ubuntu"
+
+    # farsworth is a CENTOS host that uses the yum package manager
+  - name: using yum to install figlet
+    yum:
+        name: figlet
+        state: present
+    become: yes    # run as sudo or admin
+    when: ansible_distribution == "CentOS"
