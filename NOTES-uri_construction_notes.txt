@@ -1,0 +1,24 @@
+# scheme (protocol)
+https://
+
+# authority (where ip/port) -- port implied by https (443)
+api.nasa.gov
+
+# endpoint
+/mars-photos/api/v1/rovers/curiosity/photos
+
+
+# only ever ONE question mark in a URI
+# separates the SERVICE from the query params
+?
+
+# key sol
+# value 1000
+sol=1000
+
+# separator (have as many of these as you want)
+&
+
+# key api_key
+# value DEMO_KEY
+api_key=DEMO_KEY

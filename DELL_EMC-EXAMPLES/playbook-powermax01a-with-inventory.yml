@@ -1,0 +1,26 @@
+---
+- name: Using an inventory for "forking" against PowerMax
+  hosts: powermaxes # defined in the inventory
+  connection: local
+  
+  collections:
+  - dellemc.powermax
+    
+  tasks:
+  - name: Get a list of volumes from Dell PowerMax
+    dellemc_powermax_gatherfacts:
+      unispherehost: "{{ unispherehost }}"
+      universion: "{{ universion }}"
+      verifycert: "{{ verifycert }}"
+      user: "{{ user }}"
+      password: "{{ password }}"
+    register: results
+    
+  - name: Show what results were retrieved
+    debug:
+      var: results
+      
+  - name: Write out data collected
+    copy:
+      dest: "output-{{ inventory_hostname }}"
+      content: "{{ results }}"

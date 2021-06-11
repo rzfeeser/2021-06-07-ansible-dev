@@ -1,0 +1,6 @@
+[powermaxes]
+uni-01 unispherehost=10.126.70.28 user=smc password=smc
+
+[powermaxes:vars]
+universion="90"
+verifycert=no
