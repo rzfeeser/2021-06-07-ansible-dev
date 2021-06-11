@@ -1,0 +1,42 @@
+---
+storage:
+        sg_name: ansible_sg
+        vols:
+                - vol_name: ansible_001
+                  size: 1
+                  cap_unit: GB
+                - vol_name: ansible_002
+                  size: 2
+                  cap_unit: GB
+                - vol_name: ansible_003
+                  size: 3
+                  cap_unit: GB
+        initiators:
+                - 10000000abcffaee
+                - 10000000defaabcc
+        host_name: ansible_host
+        portgroup_name: ansible_pg
+        port_list:
+                - director_id: FA-1D
+                  port_id: 24
+        mv_name: ansible_mv
+        
+base_path: "/ifs/globaluni"
+access_control: "0755"
+access_zone: "System"
+domain: "alta3.com"
+state: "present"
+
+students:
+        - peterParker
+        - lukeCage
+        - natashaRomanoff
+        - wandaMaximoff
+        - scottLang
+
+teachers:
+        - tonyStark
+        - steveRogers
+        - thorOdinson
+        - bruceBanner
+        - carolDanvers

@@ -1,0 +1,17 @@
+---
+- name: Create Unix home directory from storagedetails.yml data in PowerScale / Isilon
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  collections:
+    - dellemc.isilon
+    
+  vars_files:
+    - vars/credsvault.yml
+    - vars/storagedetails.yml
+    
+  tasks:
+    - name: Import role for isilon
+      import_role:
+        name: isilon-storage-create-handle-single-failures

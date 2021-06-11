@@ -1,0 +1,23 @@
+---
+- name: Precheck Operations - Isilon / PowerScale
+  block:
+    - name: Gather facts on Isilon cluster
+      dellemc.isilon.dellemc_isilon_gatherfacts:
+        onefs_host: "{{ onefs_host }}"
+        port_no: "{{ isilon_port }}"
+        verify_ssl: "{{ verify_ssl }}"
+        api_user: "{{ api_user }}"
+        api_password: "{{ api_password }}"
+        gather_subset:
+            - attributes
+        register: results
+        
+- name: Change Operation - Isolating single failures
+  blocK:
+    - name: CHANGE - Create filesystem with quota for students
+      include_tasks: studentstorage.yml
+      loop: "{{ students }}"
+      
+    - name: CHANGE - Create filesystem with quota for teachers
+      include_tasks: teacherstorage.yml
+      loop: "{{ teachers }}"

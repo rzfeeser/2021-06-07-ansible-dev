@@ -1,0 +1,15 @@
+---
+- name: Create a unix home directory from storagedevice
+  hosts: localhost
+  connection: local
+  gather_facts: no
+      
+  vars_files:
+    - vars/credsvault.yml
+    - vars/storagedetails.yml
+    
+  tasks:
+    - name: import role for isilon
+      import_role:
+        name: isilon-storage-create-all-rollback
+      collections: dellemc.isilon  # this ensures the role has access to the collection
