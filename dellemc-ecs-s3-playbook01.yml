@@ -1,0 +1,29 @@
+---
+- name: Create an s3 bucket on AWS with Ansible
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  
+  collections:
+          - amazon.aws
+  
+  vars:
+      #ECS_host: ## to ECS host e.g. 192.168.33.15:9021   ## use the data API port
+      bucketName: ducktoaster97 ## name of bucket to be created
+
+  vars_files:
+          - ~/cred.ecs_s3
+  tasks:
+          - name: 
+            aws_s3:
+              bucket: "{{ bucketName }}"
+              mode: delete    # change to absent to remove
+              permission: public-read
+              #s3_url: "https://{{ ECS_host }}/"
+              validate_certs: no
+              encrypt: no
+              #rgw: true
+              aws_access_key: "{{ access_key }}"
+              aws_secret_key: "{{ secret_key }}"
+            register: results_CreateBucket
+
